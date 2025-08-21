@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "gitty-mcp": {
+      "command": "dotnet",
+      "args": ["run", "--project", "src/GittyMcp/GittyMcp.csproj"]
+    }
+  }
+}
