@@ -3,19 +3,18 @@ using System.Text.Json;
 using ModelContextProtocol.Server;
 using Microsoft.Extensions.Logging;
 using GittyMcp.Services;
+using GittyMcp.GittyMcp.Services;
 
 namespace GittyMcp.Tools;
 
 [McpServerToolType]
 public sealed class GitHubTools
 {
-    private readonly GitHubService _gitHubService;
-    // private readonly ILogger<GitHubTools> _logger;
+    private readonly IGitHubService _gitHubService;
 
-    public GitHubTools(GitHubService gitHubService)
+    public GitHubTools(IGitHubService gitHubService)
     {
         _gitHubService = gitHubService;
-        // _logger = logger;
     }
 
     [McpServerTool, Description("List open GitHub issues for a repository.")]

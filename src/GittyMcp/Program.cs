@@ -3,8 +3,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Net.Http.Headers;
 using GittyMcp.Configuration;
-using GittyMcp.Services;
 using GittyMcp.Tools;
+using GittyMcp.Services;
+using GittyMcp.GittyMcp.Services;
 
 var builder = Host.CreateApplicationBuilder(args);
 var environment = builder.Environment.EnvironmentName;
@@ -18,7 +19,7 @@ builder.Logging.AddConsole(options =>
 builder.Services.Configure<GitHubOptions>(
     builder.Configuration.GetSection("GitHub"));
 
-builder.Services.AddHttpClient<GitHubService>("github-api", client =>
+builder.Services.AddHttpClient<IGitHubService, GitHubService>("github-api", client =>
 {
     client.BaseAddress = new Uri("https://api.github.com/");
     client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("McpGitHub", "1.0"));

@@ -3,10 +3,11 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using GittyMcp.Configuration;
 using GittyMcp.Models;
+using GittyMcp.GittyMcp.Services;
 
 namespace GittyMcp.Services;
 
-public class GitHubService
+public class GitHubService : IGitHubService
 {
     private readonly HttpClient _httpClient;
 
