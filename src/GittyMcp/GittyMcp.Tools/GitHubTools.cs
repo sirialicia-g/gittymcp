@@ -35,7 +35,6 @@ public sealed class GitHubTools
         [Description("Issue title")] string title,
         [Description("Issue contents")]string body)
     {
-        //NÖDVÄNDIG? Borde väl kunna gå på klassen?
         var createAnIssue = new IssueCreate { Title = title, Body = body };
         var issue = await _gitHubService.CreateIssueAsync(owner, repo, createAnIssue);
         var result = JsonSerializer.Serialize(issue, new JsonSerializerOptions { WriteIndented = true });
