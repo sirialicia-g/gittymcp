@@ -1,6 +1,6 @@
-namespace GittyMcp.Configuration;
+namespace GittyMcp.GittyMcp.Configuration;
 
-public class GitHubOptions
+public class GittyPat
 {
     public string Pat { get; set; } = string.Empty;
 

@@ -2,29 +2,30 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Net.Http.Headers;
-using GittyMcp.Configuration;
-using GittyMcp.Tools;
-using GittyMcp.Services;
+using GittyMcp.GittyMcp.Configuration;
+using ModelContextProtocol.Server;
 using GittyMcp.GittyMcp.Services;
+using Microsoft.Extensions.Options;
+using System.Text.Json;
 
 var builder = Host.CreateApplicationBuilder(args);
-var environment = builder.Environment.EnvironmentName;
-Console.WriteLine($"Environment: {environment}");
 
 builder.Logging.AddConsole(options =>
 {
     options.LogToStandardErrorThreshold = LogLevel.Trace;
 });
 
-builder.Services.Configure<GitHubOptions>(
+builder.Services.Configure<GittyPat>(
     builder.Configuration.GetSection("GitHub"));
 
-builder.Services.AddHttpClient<IGitHubService, GitHubService>("github-api", client =>
+builder.Services.AddHttpClient<IGitHubService, GitHubService>("github-api", ( serviceProvider, client) =>
 {
+    var options = serviceProvider.GetRequiredService<IOptions<GittyPat>>().Value;
+    var token = options.Pat ?? throw new InvalidOperationException("Github token is missing!");
+
     client.BaseAddress = new Uri("https://api.github.com/");
     client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("McpGitHub", "1.0"));
-    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-    client.DefaultRequestHeaders.Add("X-GitHub-Api-Version", "2022-11-28");
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("token", token);
 });
 
 builder.Services
