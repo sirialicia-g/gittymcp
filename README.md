@@ -17,15 +17,20 @@ GittyMcp (or Gittan) is my own testing ground for creating a custom MCP server w
    ```
 
 3. If that doesnt do the trick, you could also create an `appsettings.Development.json`, something in this fashion:
-   `{
-  "GitHub": {
-    "Pat": "ghp_your_pat_here",
-    "BaseUrl": "https://api.github.com/"
-  },
-  "Logging": {
-    "LogLevel": {
-      "GittyMcp": "Debug"
-    }
-  }
-}`
-4. Have fun.
+   ```json
+   {
+     "GitHub": {
+       "Pat": "ghp_your_pat_here",
+       "BaseUrl": "https://api.github.com/"
+     },
+     "Logging": {
+       "LogLevel": {
+         "GittyMcp": "Debug"
+       }
+     }
+   }
+   ```
+
+```
+4. Have fun!
+```
