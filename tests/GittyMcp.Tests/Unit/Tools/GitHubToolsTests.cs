@@ -76,7 +76,7 @@ namespace GittyMcp.Tests.Tools
                 Title = "New testissue",
                 Body = "Issuedescription",
                 State = "open",
-                GittyUrl = "https://github.com/owner/repo/issues/42"
+                GittyUrl = "https://github.com/owner/repo/issues/1337"
             };
 
             _mockGitHubService.CreateIssueAsync("testowner", "testrepo", Arg.Any<IssueCreate>())
