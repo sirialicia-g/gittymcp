@@ -6,7 +6,6 @@ using GittyMcp.GittyMcp.Configuration;
 using ModelContextProtocol.Server;
 using GittyMcp.GittyMcp.Services;
 using Microsoft.Extensions.Options;
-using System.Text.Json;
 
 var builder = Host.CreateApplicationBuilder(args);
 
@@ -18,7 +17,7 @@ builder.Logging.AddConsole(options =>
 builder.Services.Configure<GittyPat>(
     builder.Configuration.GetSection("GitHub"));
 
-builder.Services.AddHttpClient<IGitHubService, GitHubService>("github-api", ( serviceProvider, client) =>
+builder.Services.AddHttpClient<IGitHubService, GitHubService>("github-api", (serviceProvider, client) =>
 {
     var options = serviceProvider.GetRequiredService<IOptions<GittyPat>>().Value;
     var token = options.Pat ?? throw new InvalidOperationException("Github token is missing!");

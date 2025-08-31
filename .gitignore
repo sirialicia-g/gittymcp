@@ -8,6 +8,7 @@ build/
 *.userosscache
 *.sln.docstates
 *.env
+CLAUDE.md
 
 appsettings.json
 .vs/

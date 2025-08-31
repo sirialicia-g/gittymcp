@@ -47,7 +47,8 @@ public class GitHubService : IGitHubService
             res.EnsureSuccessStatusCode();
 
             var jsonRes = await res.Content.ReadAsStringAsync();
-            var createdIssue = JsonSerializer.Deserialize<IssueGet>(jsonRes) ?? throw new InvalidOperationException("Invalid format of the respons");
+            var createdIssue = JsonSerializer.Deserialize<IssueGet>(jsonRes) ??
+                throw new InvalidOperationException("Invalid format of the respons");
 
             return createdIssue;
         }

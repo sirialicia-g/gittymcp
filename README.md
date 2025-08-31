@@ -17,6 +17,7 @@ GittyMcp (or Gittan) is my own testing ground for creating a custom MCP server w
    ```
 
 3. If that doesnt do the trick, you could also create an `appsettings.Development.json`, something in this fashion:
+
    ```json
    {
      "GitHub": {
@@ -31,6 +32,4 @@ GittyMcp (or Gittan) is my own testing ground for creating a custom MCP server w
    }
    ```
 
-```
 4. Have fun!
-```

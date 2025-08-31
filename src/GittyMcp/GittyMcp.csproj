@@ -12,6 +12,12 @@
 		<FileVersion>1.0.0</FileVersion>
 		<Authors>Siria</Authors>
   </PropertyGroup>
+	<PropertyGroup>
+		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
+		<ContainerRepository>sirialicia-g/gittymcp</ContainerRepository>
+    <ContainerFamily>alpine</ContainerFamily>
+    <RuntimeIdentifiers>linux-x64;linux-arm64</RuntimeIdentifiers>
+	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="DotNetEnv" Version="3.1.1" />
