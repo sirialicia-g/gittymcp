@@ -4,11 +4,11 @@ GittyMcp (or Gittan) is my own testing ground for creating a custom MCP server w
 
 ## Features
 
-- Create and monitor issues for repo of choice without leaving the IDE
+- Create and monitor issues for repo of choice without leaving the IDE. Other features are on their way.
 
 ## Setup
 
-1. Create a PAT (personal access token) for your GitHub accout.
+1. Create a PAT (personal access token) for your GitHub accout. Classic token works just fine. Make sure to enable repo scopes.
 
 2. Set environment variable:
 
